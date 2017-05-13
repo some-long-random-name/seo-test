@@ -16,7 +16,7 @@
       %th
   - @pages.each do |page|
     %tr
-      %td= page.title
+      %td= link_to page.title, [:admin, page]
       %td
         %code= '/' + page.slug
       %td= link_to 'edit', [:edit, :admin, page]

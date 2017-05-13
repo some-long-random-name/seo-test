@@ -1,6 +1,6 @@
 class Admin::PagesController < ApplicationController
   before_action :fetch_pages, only: :index
-  before_action :fetch_page, only: %w(edit update destroy)
+  before_action :fetch_page, only: %w(show edit update destroy)
 
   def index
     @page = Page.new
@@ -15,6 +15,10 @@ class Admin::PagesController < ApplicationController
       fetch_pages
       render :index
     end
+  end
+
+  def show
+    @link_groups = @page.link_groups
   end
 
   def edit

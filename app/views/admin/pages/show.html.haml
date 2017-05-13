@@ -1,0 +1,9 @@
+%h2= @page.title
+= link_to 'Add new link group', [:new, :admin, @page, :link_group], class: 'btn btn-success'
+
+- @link_groups.each do |link_group|
+  %h4
+    = link_group.title
+    %small
+      = link_to 'edit', [:edit, :admin, @page, link_group]
+      = link_to 'remove', [:admin, @page, link_group], method: :delete, data: { confirm: 'Sure?' }

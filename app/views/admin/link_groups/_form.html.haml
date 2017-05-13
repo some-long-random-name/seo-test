@@ -1,0 +1,4 @@
+= form_for link_group, url: [:admin, page, link_group] do |f|
+  .form-group
+    = f.text_field :title, class: 'form-control', placeholder: 'Title'
+  = f.submit class: 'btn btn-success'

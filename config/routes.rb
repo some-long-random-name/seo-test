@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   root to: 'pages#index'
 
   namespace :admin do
-    resources :pages
+    resources :pages do
+      resources :link_groups, except: %w(show)
+    end
   end
 
   get '/:slug', to: 'pages#show', constraints: PageConstraint.new
