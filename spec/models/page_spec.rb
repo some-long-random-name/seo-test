@@ -12,11 +12,6 @@ RSpec.describe Page, type: :model do
       expect(page).not_to be_valid
     end
 
-    it 'invalid without slug' do
-      page = build :page, slug: ''
-      expect(page).not_to be_valid
-    end
-
     it 'invalid with same slug' do
       create :page, slug: 'master'
       page = build :page, slug: 'master'
@@ -30,6 +25,18 @@ RSpec.describe Page, type: :model do
 
     it 'remove all link groups on delete' do
       expect { page.destroy }.to change(LinkGroup, :count).by(-1)
+    end
+  end
+
+  context 'slug generation' do
+    it 'auto generate slug' do
+      page = create :page, title: 'My custom page'
+      expect(page.slug).to eq('my-custom-page')
+    end
+
+    it 'keep custom slug' do
+      page = create :page, title: 'My custom page', slug: 'foobar'
+      expect(page.slug).to eq('foobar')
     end
   end
 end
