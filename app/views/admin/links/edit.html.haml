@@ -1,3 +1,6 @@
-%h2 Edit link in page #{@page.title}
+%ol.breadcrumb
+  %li= link_to 'Pages', admin_pages_path
+  %li= link_to @page.title, admin_page_path(@page)
+  %li.active edit link
 
 = render partial: 'form', locals: { page: @page, link: @link}

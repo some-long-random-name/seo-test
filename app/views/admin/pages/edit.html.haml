@@ -1,3 +1,7 @@
+%ol.breadcrumb
+  %li= link_to 'Pages', admin_pages_path
+  %li.active edit
+
 %h2 Edit page #{@page.title}
 
 = form_for @page, url: [:admin, @page] do |f|

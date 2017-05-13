@@ -1,4 +1,7 @@
-%h2= @page.title
+%ol.breadcrumb
+  %li= link_to 'Pages', admin_pages_path
+  %li.active= @page.title
+
 = link_to 'Add new link group', [:new, :admin, @page, :link_group], class: 'btn btn-success'
 
 - @link_groups.each do |link_group|
