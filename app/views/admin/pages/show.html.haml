@@ -7,3 +7,13 @@
     %small
       = link_to 'edit', [:edit, :admin, @page, link_group]
       = link_to 'remove', [:admin, @page, link_group], method: :delete, data: { confirm: 'Sure?' }
+      = link_to 'add new link', new_admin_page_link_path(@page, link_group_id: link_group)
+
+  %table.table
+    %thead
+      %tr
+        %th Title
+  %tbody
+    - link_group.links.each do |link|
+      %tr
+        %td= link.title

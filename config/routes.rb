@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :pages do
       resources :link_groups, except: %w(show)
+      resources :links, except: %w(show)
     end
   end
 

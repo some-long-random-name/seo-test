@@ -1,0 +1,11 @@
+= form_for @link, url: [:admin, @page, @link] do |f|
+  = f.hidden_field :link_group_id
+
+  .form-group
+    = f.text_field :title, class: 'form-control', placeholder: 'Title'
+  .form-group
+    = f.text_field :slug, class: 'form-control', placeholder: 'Slug'
+  .form-group
+    = f.text_field :search_query, class: 'form-control', placeholder: 'Search query'
+
+  = f.submit class: 'btn btn-success'

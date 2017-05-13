@@ -1,0 +1,31 @@
+class Admin::LinksController < ApplicationController
+  before_action :find_page
+
+  def new
+    @page = Page.find params[:page_id]
+    @link = Link.new link_group_id: params[:link_group_id]
+  end
+
+  def create
+    @link = Link.new link_params
+
+    if @link.save
+      redirect_to [:admin, @page]
+    else
+      render :new
+    end
+  end
+
+  private
+
+  def find_page
+    @page = Page.find params[:page_id]
+  end
+
+  def link_params
+    params
+      .require(:link)
+      .permit(:title, :slug, :search_query, :link_group_id)
+      .merge(page_id: @page.id)
+  end
+end
