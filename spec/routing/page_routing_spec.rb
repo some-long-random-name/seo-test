@@ -10,4 +10,14 @@ describe 'routes for pages controller' do
   it 'does not route for /notfound' do
     expect(get: '/notfound').not_to be_routable
   end
+
+  it 'route to right controller' do
+    expected = {
+      controller: 'pages',
+      action: 'show',
+      slug: 'foobar'
+    }
+
+    expect(get: '/foobar').to route_to(expected)
+  end
 end

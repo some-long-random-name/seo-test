@@ -1,4 +1,5 @@
 require 'page_constraint'
+require 'link_constraint'
 
 Rails.application.routes.draw do
   root to: 'pages#index'
@@ -13,5 +14,5 @@ Rails.application.routes.draw do
   end
 
   get '/:slug', to: 'pages#show', constraints: PageConstraint.new
-  get '/:page_slug/:link_slug', to: 'links#show', as: :link
+  get '/:page_slug/:link_slug', to: 'links#show', as: :link, constraints: LinkConstraint.new
 end
