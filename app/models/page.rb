@@ -3,4 +3,6 @@ class Page < ApplicationRecord
   validates :slug, presence: true
 
   scope :sorted, -> { order :title }
+
+  has_many :link_groups, dependent: :destroy
 end

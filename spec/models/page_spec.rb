@@ -17,4 +17,13 @@ RSpec.describe Page, type: :model do
       expect(page).not_to be_valid
     end
   end
+
+  context 'link_groups relation' do
+    let(:page) { create :page }
+    before { create :link_group, page: page }
+
+    it 'remove all link groups on delete' do
+      expect { page.destroy }.to change(LinkGroup, :count).by(-1)
+    end
+  end
 end
