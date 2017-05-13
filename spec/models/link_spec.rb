@@ -17,6 +17,11 @@ RSpec.describe Link, type: :model do
       expect(link).not_to be_valid
     end
 
+    it 'invalid without search query' do
+      link = build :link, search_query: ''
+      expect(link).not_to be_valid
+    end
+
     it 'invalid without page' do
       link = build :link, page: nil
       expect(link).not_to be_valid

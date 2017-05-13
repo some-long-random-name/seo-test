@@ -6,4 +6,5 @@ class Link < ApplicationRecord
   validates :page, presence: true
   validates :title, presence: true
   validates :slug, presence: true
+  validates :search_query, presence: true
 end
