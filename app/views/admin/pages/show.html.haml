@@ -13,7 +13,17 @@
     %thead
       %tr
         %th Title
-  %tbody
-    - link_group.links.each do |link|
-      %tr
-        %td= link.title
+        %th URL
+        %th Search query
+        %th
+        %th
+    %tbody
+      - link_group.links.each do |link|
+        %tr
+          %td= link.title
+          %td
+            %code= '/' + @page.slug + '/' + link.slug
+          %td
+            %code= link.search_query
+          %td= link_to 'edit', [:edit, :admin, @page, link]
+          %td= link_to 'delete', [:admin, @page, link], method: :delete, data: { confirm: 'Sure?' }

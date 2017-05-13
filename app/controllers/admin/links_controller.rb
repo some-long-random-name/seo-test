@@ -1,5 +1,6 @@
 class Admin::LinksController < ApplicationController
   before_action :find_page
+  before_action :find_link, only: %w(edit update destroy)
 
   def new
     @page = Page.find params[:page_id]
@@ -16,10 +17,30 @@ class Admin::LinksController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @link.update link_params
+      redirect_to [:admin, @page]
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @link.destroy
+    redirect_to [:admin, @page]
+  end
+
   private
 
   def find_page
     @page = Page.find params[:page_id]
+  end
+
+  def find_link
+    @link = @page.links.find params[:id]
   end
 
   def link_params

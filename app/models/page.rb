@@ -5,4 +5,5 @@ class Page < ApplicationRecord
   scope :sorted, -> { order :title }
 
   has_many :link_groups, dependent: :destroy
+  has_many :links
 end
