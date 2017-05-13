@@ -1,13 +1,23 @@
 %h2 Pages admin
 
-= form_for @page, url: [:admin, @page] do |f|
-  = f.text_field :title
-  = f.text_field :slug
-  = f.submit
+= form_for @page, url: [:admin, @page], html: { class: 'form-inline' } do |f|
+  .form-group
+    = f.text_field :title, placeholder: 'Page title', class: 'form-control'
+  .form-group
+    = f.text_field :slug, placeholder: 'Page slug', class: 'form-control'
+  = f.submit class: 'btn btn-success btn-sm'
 
-%ul
+%table.table
+  %thead
+    %tr
+      %th Page title
+      %th Url
+      %th
+      %th
   - @pages.each do |page|
-    %li
-      = page.title
-      = link_to 'edit', [:edit, :admin, page]
-      = link_to 'delete', [:admin, page], method: :delete, data: { confirm: 'Sure?' }
+    %tr
+      %td= page.title
+      %td
+        %code= '/' + page.slug
+      %td= link_to 'edit', [:edit, :admin, page]
+      %td= link_to 'delete', [:admin, page], method: :delete, data: { confirm: 'Sure?' }
