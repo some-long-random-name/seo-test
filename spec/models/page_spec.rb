@@ -16,6 +16,12 @@ RSpec.describe Page, type: :model do
       page = build :page, slug: ''
       expect(page).not_to be_valid
     end
+
+    it 'invalid with same slug' do
+      create :page, slug: 'master'
+      page = build :page, slug: 'master'
+      expect(page).not_to be_valid
+    end
   end
 
   context 'link_groups relation' do
