@@ -1,1 +1,7 @@
 %h2= @page.title
+
+- @link_groups.each do |link_group|
+  %h4= link_group.title
+  %ul
+    - link_group.links.each do |link|
+      %li= link_to link.title, link_path(link.page.slug, link.slug)

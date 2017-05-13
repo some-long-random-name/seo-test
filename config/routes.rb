@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   end
 
   get '/:slug', to: 'pages#show', constraints: PageConstraint.new
+  get '/:page_slug/:link_slug', to: 'links#show', as: :link
 end

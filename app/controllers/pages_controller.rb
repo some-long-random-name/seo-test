@@ -5,5 +5,6 @@ class PagesController < ApplicationController
 
   def show
     @page = Page.find_by slug: params[:slug]
+    @link_groups = @page.link_groups.includes(:links)
   end
 end
