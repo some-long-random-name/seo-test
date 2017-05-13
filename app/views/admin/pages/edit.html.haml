@@ -1,0 +1,6 @@
+%h2 Edit page #{@page.title}
+
+= form_for @page, url: [:admin, @page] do |f|
+  = f.text_field :title
+  = f.text_field :slug
+  = f.submit

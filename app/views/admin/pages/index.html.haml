@@ -1,0 +1,13 @@
+%h2 Pages admin
+
+= form_for @page, url: [:admin, @page] do |f|
+  = f.text_field :title
+  = f.text_field :slug
+  = f.submit
+
+%ul
+  - @pages.each do |page|
+    %li
+      = page.title
+      = link_to 'edit', [:edit, :admin, page]
+      = link_to 'delete', [:admin, page], method: :delete, data: { confirm: 'Sure?' }
