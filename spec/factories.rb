@@ -1,4 +1,7 @@
 FactoryGirl.define do
+  factory :link do
+    
+  end
   factory :link_group do
    title 'Group title'
    page
