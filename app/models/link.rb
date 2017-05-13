@@ -7,4 +7,6 @@ class Link < ApplicationRecord
   validates :title, presence: true
   validates :slug, presence: true
   validates :search_query, presence: true
+
+  scope :sorted, -> { order :title }
 end
