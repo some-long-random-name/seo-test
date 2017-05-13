@@ -19,6 +19,8 @@
     %tr
       %td= link_to page.title, [:admin, page]
       %td
-        %code= '/' + page.slug
-      %td= link_to 'edit', [:edit, :admin, page]
-      %td= link_to 'delete', [:admin, page], method: :delete, data: { confirm: 'Sure?' }
+        %code= page_path(page.slug)
+      %td
+        = btn 'Edit', [:edit, :admin, page], icon: :edit
+      %td
+        = btn 'Delete', [:admin, page], method: :delete, data: { confirm: 'Sure?' }, icon: :trash, style: :danger

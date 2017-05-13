@@ -8,9 +8,9 @@
   %h4
     = link_group.title
     %small
-      = link_to 'edit', [:edit, :admin, @page, link_group]
-      = link_to 'remove', [:admin, @page, link_group], method: :delete, data: { confirm: 'Sure?' }
-      = link_to 'add new link', new_admin_page_link_path(@page, link_group_id: link_group)
+      = btn 'Edit',[:edit, :admin, @page, link_group], icon: :edit
+      = btn 'Remove', [:admin, @page, link_group], method: :delete, data: { confirm: 'Sure?' }, icon: :trash, style: :danger
+      = btn 'Add new link', new_admin_page_link_path(@page, link_group_id: link_group), icon: :plus, style: :success
 
   %table.table
     %thead
@@ -28,5 +28,5 @@
             %code= '/' + @page.slug + '/' + link.slug
           %td
             %code= link.search_query
-          %td= link_to 'edit', [:edit, :admin, @page, link]
-          %td= link_to 'delete', [:admin, @page, link], method: :delete, data: { confirm: 'Sure?' }
+          %td= btn 'edit', [:edit, :admin, @page, link], icon: :edit
+          %td= btn 'Delete', [:admin, @page, link], method: :delete, data: { confirm: 'Sure?' }, icon: :trash, style: :danger
