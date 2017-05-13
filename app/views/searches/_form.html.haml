@@ -1,0 +1,5 @@
+%h2 Search
+= form_tag search_path, class: 'form-inline', method: :get do
+  .form-group
+    = text_field_tag :query, query, class: 'form-control', placeholder: 'query'
+  = submit_tag 'search', class: 'btn btn-success'

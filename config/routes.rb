@@ -3,6 +3,8 @@ require 'page_constraint'
 Rails.application.routes.draw do
   root to: 'pages#index'
 
+  resource :search, only: %w(show)
+
   namespace :admin do
     resources :pages do
       resources :link_groups, except: %w(show)
