@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170513184956) do
+ActiveRecord::Schema.define(version: 20170514053511) do
 
   create_table "link_groups", force: :cascade do |t|
     t.string "title", null: false
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20170513184956) do
     t.integer "link_group_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "description"
     t.index ["link_group_id"], name: "index_links_on_link_group_id"
     t.index ["page_id"], name: "index_links_on_page_id"
   end

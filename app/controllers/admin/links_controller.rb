@@ -46,7 +46,7 @@ class Admin::LinksController < ApplicationController
   def link_params
     params
       .require(:link)
-      .permit(:title, :slug, :search_query, :link_group_id)
+      .permit(:title, :slug, :search_query, :link_group_id, :description)
       .merge(page_id: @page.id)
   end
 end

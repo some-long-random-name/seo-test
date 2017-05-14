@@ -1,3 +1,5 @@
 %h2= @link.title
 
+= simple_format @link.description
+
 = render partial: 'searches/results', object: @search.results
