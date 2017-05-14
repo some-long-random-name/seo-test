@@ -12,6 +12,7 @@ class Admin::LinkGroupsController < ApplicationController
     if @link_group.save
       redirect_to admin_page_path(@link_group.page)
     else
+      flash[:errors] = @link_group.errors.full_messages
       render :new
     end
   end
@@ -23,6 +24,7 @@ class Admin::LinkGroupsController < ApplicationController
     if @link_group.update link_group_params
       redirect_to [:admin, @page]
     else
+      flash[:errors] = @link_group.errors.full_messages
       render :edit
     end
   end

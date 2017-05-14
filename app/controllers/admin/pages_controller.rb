@@ -12,6 +12,7 @@ class Admin::PagesController < ApplicationController
     if @page.save
       redirect_to admin_pages_path
     else
+      flash[:errors] = @page.errors.full_messages
       fetch_pages
       render :index
     end
@@ -28,6 +29,7 @@ class Admin::PagesController < ApplicationController
     if @page.update page_params
       redirect_to admin_pages_path
     else
+      flash[:errors] = @page.errors.full_messages
       render :edit
     end
   end

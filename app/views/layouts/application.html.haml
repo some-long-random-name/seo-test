@@ -13,4 +13,7 @@
 
   %body
     .container
+      - if flash[:errors]
+        %p.bg-danger
+          = flash[:errors].join('<br />').html_safe
       = yield

@@ -13,6 +13,7 @@ class Admin::LinksController < ApplicationController
     if @link.save
       redirect_to [:admin, @page]
     else
+      flash[:errors] = @link.errors.full_messages
       render :new
     end
   end
@@ -24,6 +25,7 @@ class Admin::LinksController < ApplicationController
     if @link.update link_params
       redirect_to [:admin, @page]
     else
+      flash[:errors] = @link.errors.full_messages
       render :edit
     end
   end
