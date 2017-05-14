@@ -12,11 +12,6 @@ RSpec.describe Link, type: :model do
       expect(link).not_to be_valid
     end
 
-    it 'invalid without slug' do
-      link = build :link, slug: ''
-      expect(link).not_to be_valid
-    end
-
     it 'invalid without search query' do
       link = build :link, search_query: ''
       expect(link).not_to be_valid
@@ -30,6 +25,18 @@ RSpec.describe Link, type: :model do
     it 'invalid without link_group' do
       link = build :link, link_group: nil
       expect(link).not_to be_valid
+    end
+  end
+
+  context 'slug generation' do
+    it 'auto generate slug' do
+      link = create :link, title: 'Long-long link'
+      expect(link.slug).to eq('long-long-link')
+    end
+
+    it 'keep custom slug' do
+      link = create :link, title: 'Foobar', slug: 'my-description'
+      expect(link.slug).to eq('my-description')
     end
   end
 end
