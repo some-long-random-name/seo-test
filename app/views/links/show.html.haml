@@ -1,3 +1,8 @@
+%ol.breadcrumb
+  %li= link_to 'Home page', root_path
+  %li= link_to @page.title, page_path(@page.slug)
+  %li.active= @link.title
+
 %h2= @link.title
 
 = simple_format @link.description

@@ -1,4 +1,6 @@
-%h2= @page.title
+%ol.breadcrumb
+  %li= link_to 'Home page', root_path
+  %li.active= @page.title
 
 - @link_groups.each do |link_group|
   %h4= link_group.title

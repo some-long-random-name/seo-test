@@ -1,2 +1,6 @@
+%ol.breadcrumb
+  %li= link_to 'Home page', root_path
+  %li.active Search results
+
 = render partial: 'form', locals: { query: @query }
 = render partial: 'results', object: @search.results
