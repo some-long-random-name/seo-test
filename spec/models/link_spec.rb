@@ -2,6 +2,9 @@ require 'rails_helper'
 
 RSpec.describe Link, type: :model do
   context 'validation' do
+    let(:page_a) { create :page }
+    let(:page_b) { create :page }
+
     it 'valid with default factory' do
       link = build :link
       expect(link).to be_valid
@@ -32,6 +35,18 @@ RSpec.describe Link, type: :model do
         link = build :link, slug: slug
         expect(link).not_to be_valid
       end
+    end
+
+    it 'invalid with same slug' do
+      create :link, slug: 'master', page: page_a
+      page = build :link, slug: 'master', page: page_a
+      expect(page).not_to be_valid
+    end
+
+    it 'valid with same slug in different page' do
+      create :link, slug: 'master', page: page_a
+      page = build :link, slug: 'master', page: page_b
+      expect(page).to be_valid
     end
   end
 

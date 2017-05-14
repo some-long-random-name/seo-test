@@ -9,7 +9,7 @@ class Link < ApplicationRecord
   validates :link_group, presence: true
   validates :page, presence: true
   validates :title, presence: true
-  validates :slug, presence: true, format: { with: SLUG_RE }
+  validates :slug, presence: true, uniqueness: { scope: :page }, format: { with: SLUG_RE }
   validates :search_query, presence: true
 
   scope :sorted, -> { order :title }
