@@ -13,7 +13,12 @@
 
   %body
     .container
+      %nav.navbar.navbar-default
+        %ul.nav.navbar-nav
+          %li= link_to 'Public area', root_path
+          %li= link_to 'Admin area', admin_pages_path
+
       - if flash[:errors]
         %p.bg-danger
-          = flash[:errors].join('<br />').html_safe
+          = flash[:errors].join('<br />').html_safej
       = yield
