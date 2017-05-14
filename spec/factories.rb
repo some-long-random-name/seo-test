@@ -12,6 +12,6 @@ FactoryGirl.define do
   end
 
   factory :page do
-    title 'Test page'
+    sequence(:title) { |n|  "Test page #{n}"}
   end
 end

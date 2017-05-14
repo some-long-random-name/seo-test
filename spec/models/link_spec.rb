@@ -26,6 +26,13 @@ RSpec.describe Link, type: :model do
       link = build :link, link_group: nil
       expect(link).not_to be_valid
     end
+
+    it 'invalid with wrong slug' do
+      ['/abc', '#@', '你好', "a\nb"].each do |slug|
+        link = build :link, slug: slug
+        expect(link).not_to be_valid
+      end
+    end
   end
 
   context 'slug generation' do

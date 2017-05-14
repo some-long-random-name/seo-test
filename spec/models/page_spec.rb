@@ -17,6 +17,13 @@ RSpec.describe Page, type: :model do
       page = build :page, slug: 'master'
       expect(page).not_to be_valid
     end
+
+    it 'invalid with wrong slug' do
+      ['/abc', '#@', '你好', "a\nb"].each do |slug|
+        page = build :page, slug: slug
+        expect(page).not_to be_valid
+      end
+    end
   end
 
   context 'link_groups relation' do

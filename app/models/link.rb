@@ -1,4 +1,6 @@
 class Link < ApplicationRecord
+  SLUG_RE = /\A[a-z0-9-]+\z/
+
   before_validation :generate_slug
 
   belongs_to :link_group
@@ -7,7 +9,7 @@ class Link < ApplicationRecord
   validates :link_group, presence: true
   validates :page, presence: true
   validates :title, presence: true
-  validates :slug, presence: true
+  validates :slug, presence: true, format: { with: SLUG_RE }
   validates :search_query, presence: true
 
   scope :sorted, -> { order :title }
